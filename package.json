@@ -1,0 +1,15 @@
+{
+  "name": "cypressexam",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Marcos Rubiolo",
+  "type": "commonjs",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0"
+  }
+}

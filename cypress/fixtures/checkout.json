@@ -1,0 +1,20 @@
+{
+    "nombre": "Marcos",
+    "apellido": "Rubiola",
+    "email": "marcos.rubiola@gmail.com",
+    "direccion": "Av siempre viva 397",
+    "pais": "Argentina",
+    "num_tarjeta": "4301822375925071",
+    "fecha_exp": "2029-09",
+    "cvv": "668",
+    "num_tarjeta_block": "5329127549652373",
+    "fecha_exp_block": "2028-05",
+    "cvv_block": "495",
+    "num_tarjeta_nf": "4577009248375940",
+    "fecha_exp_nf": "2027-05",
+    "cvv_nf": "254",
+    "num_tarjeta_inv": "5329127549652374",
+    "fecha_exp_inv": "2028-07",
+    "cvv_inv": "318"
+  }
+  
