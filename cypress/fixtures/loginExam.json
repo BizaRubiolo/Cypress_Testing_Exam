@@ -1,5 +1,8 @@
 {
   "email": "bizarubiolo@gmail.com",
   "password": "12345678?",
-  "emailError": "bizarubiolo18@gmail.com"
+  "emailError": "bizarubiolo18@gmail.com",
+    "emailpre": "marcosexam",
+  "dominio": "test.com",
+  "passwordPre": "12345678"
 }

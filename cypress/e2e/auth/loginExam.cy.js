@@ -1,19 +1,18 @@
+import * as LoginExam from '../../support/selectors/loginExam';
 const { faker } = require ('@faker-js/faker');
 
 describe('Flujos de registro', () => {
-    beforeEach(() => {
+    beforeEach(function () {
         cy.visit('auth/login');
+        cy.fixture('loginExam').as('usuario');
     });
 
-    it('Login exitoso y boton deshabilitado', () => {
-        cy.get('[data-at="submit-login"]').should('be.disabled');
-        cy.fixture('loginExam').then((usuario) => {
-            cy.get('[name="email"]').type(usuario.email);
-            cy.get('[data-at="submit-login"]').should('be.disabled');
-            cy.get('[name="password"]').type(usuario.password);
-            cy.get('[data-at="submit-login"]').click();
-            }
-        )
+    it('Login exitoso y boton deshabilitado', function() {
+        cy.get(LoginExam.BotonInicio).should('be.disabled');
+            cy.get(LoginExam.EMAIL).type(this.usuario.email);
+            cy.get(LoginExam.BotonInicio).should('be.disabled');
+            cy.get(LoginExam.PASSWORD).type(this.usuario.password);
+            cy.get(LoginExam.BotonInicio).click();
         cy.get('[href="/my-account"]').should('be.visible');
     });
 
@@ -28,24 +27,19 @@ describe('Flujos de registro', () => {
         cy.get('.swal2-popup').should('contains.text','Recuperar contraseña');
     });
 
-    it('Credenciales incorrectas', () => {
-        cy.fixture('loginExam').then((usuario) => {
-            cy.get('[name="email"]').type(usuario.emailError);
-            cy.get('[name="password"]').type(usuario.password);
-            cy.get('[data-at="submit-login"]').click();
-            }
-        )
+    it('Credenciales incorrectas', function () {
+            cy.get(LoginExam.EMAIL).type(this.usuario.emailError);
+            cy.get(LoginExam.PASSWORD).type(this.usuario.password);
+            cy.get(LoginExam.BotonInicio).click();
+ 
         cy.get('.swal2-popup').should('contains.text','No pudimos iniciar sesión con estas credenciales.');
         cy.get('.swal2-confirm').click();
     });
 
-    it.only('Cuenta no activada', () => {
-        cy.fixture('registroExam').then((usuario) => {
-            cy.get('[name="email"]').type(`${usuario.emailpre}@${usuario.dominio}`);
-            cy.get('[name="password"]').type(usuario.password);
-            cy.get('[data-at="submit-login"]').click();
-            }
-        )
+    it('Cuenta no activada', function () {
+            cy.get(LoginExam.EMAIL).type(`${this.usuario.emailpre}@${this.usuario.dominio}`);
+            cy.get(LoginExam.PASSWORD).type(this.usuario.passwordPre);
+            cy.get(LoginExam.BotonInicio).click();
         cy.get('.swal2-popup').should('contains.text','Tu cuenta no ha sido activada.');
         cy.get('.swal2-confirm').click()
     });
